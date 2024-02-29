@@ -20,11 +20,17 @@ def test_init_incorrect_file():
     with pytest.raises(FileNotFoundError):
         Student('Иван', 'subjects.txt')
 
-def test_incorrect_subject_name():
-    with pytest.raises(TypeError):
-        Student.get_average_test_score("Биология")
+def test_incorrect_subject_name(s1):
+    with pytest.raises(ValueError):
+        s1.get_average_test_score("Биология")
 
+def test_incorrect_grade(s1):
+    with pytest.raises(ValueError):
+        s1.add_grade("Математика", 6)
 
+def test_incorrect_test_score(s1):
+    with pytest.raises(ValueError):
+        s1.add_test_score("Химия", 101)
 
 
 

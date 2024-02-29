@@ -12,10 +12,15 @@ class Student:
         return subjects
 
     def add_grade(self, subject, grade):
-        self.data_subjects[subject] = grade
-
+        if 2<=grade<=5:
+            self.data_subjects[subject] = grade
+        else:
+            raise ValueError(f'Оценка {grade} не может быть ниже 2 и больше 5')
     def add_test_score(self, subject, test_score):
-        self.data_subjects_test_score[subject] = test_score
+        if 0 < test_score < 100:
+            self.data_subjects_test_score[subject] = test_score
+        else:
+            raise ValueError(f"Результат {test_score} должен быть больше 0 и меньше 100")
 
     def get_average_grade(self):
         value = 0
@@ -47,18 +52,18 @@ class Student:
 
 
 
-student = Student("Иван Иванов", "subjects.csv")
-
-student.add_grade("Математика", 4)
-student.add_test_score("Математика", 85)
-
-student.add_grade("История", 5)
-student.add_test_score("История", 92)
-
-average_grade = student.get_average_grade()
-print(f"Средний балл: {average_grade}")
-
-average_test_score = student.get_average_test_score("Математика")
-print(f"Средний результат по тестам по математике: {average_test_score}")
-
-print(student)
+# student = Student("Иван Иванов", "subjects.csv")
+#
+# student.add_grade("Математика", 4)
+# student.add_test_score("Математика", 85)
+#
+# student.add_grade("История", 5)
+# student.add_test_score("История", 92)
+#
+# average_grade = student.get_average_grade()
+# print(f"Средний балл: {average_grade}")
+#
+# average_test_score = student.get_average_test_score("Математика")
+# print(f"Средний результат по тестам по математике: {average_test_score}")
+#
+# print(student)
